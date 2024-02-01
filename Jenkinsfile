@@ -2,7 +2,7 @@ pipeline{
     agent any
     //can add environment and tool like below and later can bind their value in steps
     tools{
-        maven "MAVEN_HOME"
+        maven "maven"
     }
     stages{
 
