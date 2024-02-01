@@ -13,7 +13,13 @@ pipeline{
         }
         stage("deploy adapters"){
              steps {
-                bat "deploy adapters: [tomcat9(credentialsId: '7c73983f-aa98-4e9a-9cfb-c4d69821794f', path: '', url: 'http://localhost:8081/')], contextPath: null, war: '**/*.war'"
+                 script {
+                    def tomcatUrl = 'http://localhost:8081'
+                    def warFile = findFiles(glob: '**/*.war')[0]
+
+            bat "curl -v --user root:root --upload-file ${warFile} ${tomcatUrl}"
+        }
+              //   bat "deploy adapters: [tomcat9(credentialsId: '7c73983f-aa98-4e9a-9cfb-c4d69821794f', path: '', url: 'http://localhost:8081/')], contextPath: null, war: '**/*.war'"
            }
 
         }
