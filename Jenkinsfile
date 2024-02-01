@@ -12,13 +12,12 @@ pipeline{
             }
         }
         stage("deploy"){
-            steps{
-                    def tomcatCredentialsId = '7c73983f-aa98-4e9a-9cfb-c4d69821794f'
-                    def tomcatUrl = 'http://localhost:8081/'
-                    def warFile = '**/*.war'
-                bat "custom_deploy_command -credentialsId $tomcatCredentialsId -url $tomcatUrl -war $warFile"
-                // "deploy adapters: [tomcat9(credentialsId: '7c73983f-aa98-4e9a-9cfb-c4d69821794f', path: '', url: 'http://localhost:8081/')], contextPath: null, war: '**/*.war'"
-            }
+             steps {
+                def tomcatCredentialsId = '7c73983f-aa98-4e9a-9cfb-c4d69821794f'
+                def tomcatUrl = 'http://localhost:8081/'
+                def warFile = '**/*.war'
+                bat "custom_deploy_command -credentialsId ${tomcatCredentialsId} -url ${tomcatUrl} -war ${warFile}"
+           }
 
         }
     }
