@@ -19,7 +19,7 @@ public class cacheConfiguration {
         public void customize(ConcurrentMapCacheManager cacheManager) {
            //null is allowed by default it's true    
            cacheManager.setAllowNullValues(false);
-           //Whatever object you rae trying to store in cache that should be serilizable
+           //Whatever object you are trying to store in cache that should be serilizable
            cacheManager.setStoreByValue(true);
            System.out.println("customizer invoked");
         }
